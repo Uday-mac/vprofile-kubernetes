@@ -4,8 +4,8 @@ metadata:
   name: vprofile-ingress
   labels:
     app.kubernetes.io/name: vprofile-ingress 
-  annotations:
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  # annotations:
+  #   nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
   ingressClassName: nginx
   rules:
