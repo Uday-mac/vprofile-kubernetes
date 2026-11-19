@@ -46,7 +46,7 @@ metadata:
   app: db01
 spec:
   selector:
-    name: db01
+    app: db01
   type: ClusterIP
   ports:
   - name: db-port
