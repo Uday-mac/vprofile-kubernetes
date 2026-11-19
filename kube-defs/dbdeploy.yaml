@@ -43,7 +43,7 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  app: db01
+  name: db01
 spec:
   selector:
     app: db01
