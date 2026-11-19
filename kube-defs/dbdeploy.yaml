@@ -16,13 +16,6 @@ spec:
       containers:
       - image:  udaydevmac/vprofile-db:latest
         name: db01
-        resources:
-          requests:
-            cpu: "20m"
-            memory: "55M"
-          limits:
-            cpu: "100m"
-            memory: "155M"
         ports:
          - containerPort: 3306
         env:
