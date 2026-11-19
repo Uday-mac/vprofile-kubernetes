@@ -34,10 +34,6 @@ spec:
         volumeMounts:
           - name:  db-vol
             mountPath: /var/lib/mysql
-      volumes:
-        - name: db-vol
-          persistentVolumeClaim:
-            claimName: dbpvc
       initContainers: 
         - image: busybox
           name: init-busy-box
@@ -45,6 +41,10 @@ spec:
           volumeMounts:
             - name: db-vol
               mountPath: /var/lib/mysql
+      volumes:
+        - name: db-vol
+          persistentVolumeClaim:
+            claimName: dbpvc
         
 ---
 kind: Service
