@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vprofile-db
+  labels:
+    app:  db01
+spec:
+  selector:
+    matchLabels:
+      name:  db01
+  template:
+    metadata:
+      labels:
+        name:  db01
+    spec:
+      containers:
+      - image:  udaydevmac/vprofile-db:latest
+        name: db01
+        resources:
+          requests:
+            cpu: "20m"
+            memory: "55M"
+          limits:
+            cpu: "100m"
+            memory: "155M"
+        ports:
+         - containerPort: 3306
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: app-secret
+                key: db_pass
+          - name: MYSQL_USER
+            valueFrom:
+              secretKeyRef:
+                name: app-secret
+                key: db_name
+        volumeMounts:
+          - name:  db-vol
+            mountPath: /var/lib/mysql
+      volumes:
+        - name: db-vol
+          type: persistentVolumeClaim
+          claimName: dbpvc
+      initContainers: 
+        - image: busybox
+          name: init-busy-box
+          args: ["rm","-rf","/var/lib/mysql/lost+found"]
+          volumeMounts:
+            - name: db-vol
+              mountPath: /var/lib/mysql
+        
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: db01
+spec:
+  selector:
+    app: vprodb
+  type: ClusterIP
+  ports:
+  - name: db-port
+    port:  3306
+    targetPort: 3306
