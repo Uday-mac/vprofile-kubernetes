@@ -11,7 +11,7 @@ spec:
   template:
     metadata:
       labels:
-        name:  db01
+        app:  db01
     spec:
       containers:
       - image:  udaydevmac/vprofile-db:latest
@@ -43,7 +43,7 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: db01
+  app: db01
 spec:
   selector:
     name: db01

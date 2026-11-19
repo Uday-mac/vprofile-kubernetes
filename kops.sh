@@ -40,7 +40,7 @@ kops update cluster --name=kops.learndevcloud.shop --state=s3://kopscluster2191 
 kops validate cluster --name=kops.learndevcloud.shop --state=s3://kopscluster2191
 
 #delete cluster 
-kops delete cluster --name=kops.learndevcloud.shop --state=s3://kopscluster2191
+kops delete cluster --name=kops.learndevcloud.shop --state=s3://kopscluster2191 --yes
 
 #installing ingress nginx controller
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.3/deploy/static/provider/aws/deploy.yaml
