@@ -5,7 +5,7 @@ metadata:
   labels:
     app: vproapp
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: vproapp
@@ -17,13 +17,6 @@ spec:
       containers:
       - name: vproapp
         image: udaydevmac/vprofile-app:v1.0.0
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
-          requests:
-            memory: "64Mi"
-            cpu: "250m"
         ports:
         - containerPort: 8080
       initContainers:
