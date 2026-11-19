@@ -31,11 +31,6 @@ spec:
               secretKeyRef:
                 name: app-secret
                 key: db_pass
-          - name: MYSQL_USER
-            valueFrom:
-              secretKeyRef:
-                name: app-secret
-                key: db_name
         volumeMounts:
           - name:  db-vol
             mountPath: /var/lib/mysql
