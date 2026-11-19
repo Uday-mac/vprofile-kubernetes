@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: dbvpc
 spec:
-  storageClassName: kops-csi-1-21
+  storageClassName: default
   resources:
     requests:
       storage: 3Gi
