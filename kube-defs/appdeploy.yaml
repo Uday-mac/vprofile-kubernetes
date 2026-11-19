@@ -30,10 +30,10 @@ spec:
       - name: db-connection
         image: busybox
         command: ['sh', '-c', "until nslookup db01.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for myservice; sleep 2; done"] 
-      - name: db-connection
+      - name: memcached-connection
         image: busybox
         command: ['sh', '-c', "until nslookup mc01.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for myservice; sleep 2; done"]
-      - name: db-connection
+      - name: rabbitmq-connection
         image: busybox
         command: ['sh', '-c', "until nslookup rmq01.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for myservice; sleep 2; done"]
 ---
