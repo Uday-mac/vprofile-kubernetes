@@ -26,12 +26,12 @@ kops create cluster \
     --state=s3://kopscluster2191 \
     --zones=us-east-1a,us-east-1b \
     --node-count=2 \
-    --node-size=t3.small \
+    --node-size=c7i-flex.large \
     --node-volume-size=20 \
-    --control-plane-size=t3.small \
+    --control-plane-size=c7i-flex.large \
     --control-plane-volume-size=20 \
     --dns-zone=kops.learndevcloud.shop \
-    --ssh-public-key=~/.ssh/kops.pub
+    --ssh-public-key=~/.ssh/kop.pub
 
 #update cluster
 kops update cluster --name=kops.learndevcloud.shop --state=s3://kopscluster2191 --admin --yes
@@ -39,3 +39,8 @@ kops update cluster --name=kops.learndevcloud.shop --state=s3://kopscluster2191 
 #validate cluster
 kops validate cluster --name=kops.learndevcloud.shop --state=s3://kopscluster2191
 
+#delete cluster 
+kops delete cluster --name=kops.learndevcloud.shop --state=s3://kopscluster2191
+
+#installing ingress nginx controller
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-0.32.0/deploy/static/provider/aws/deploy.yaml
